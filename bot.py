@@ -1,5 +1,4 @@
 import os
-import discord
 
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -17,7 +16,7 @@ async def on_voice_state_update(member, before, after):
             guild = after.channel.guild
             message = cleanMemberName + " has joined " + after.channel.name
         
-        if before.channel is not None:
+        if before.channel is not None and after.channel is None:
             guild = before.channel.guild
             message = cleanMemberName + " has left " + before.channel.name
 
