@@ -12,6 +12,9 @@ bot = commands.Bot(command_prefix='!')
 async def on_voice_state_update(member, before, after):
         cleanMemberName = member.name.split('#')[0]
 
+        if after.channel == before.channel:
+            return
+
         if after.channel is not None:
             guild = after.channel.guild
             message = cleanMemberName + " has joined " + after.channel.name
